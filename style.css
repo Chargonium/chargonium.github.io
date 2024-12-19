@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #ff0000, #0000ff);
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    min-height: 100vh; /* Ensure the body fills the entire viewport height */
+}
+
+#name {
+    display: flex;
+    align-self: center;
+    justify-self: center;
+}
+
+img {
+    text-align: left;
+    width: 80px;
+    height: 80px;
+    top: 0px;
+    left: 0px;
+    border-radius: 150px;
+    margin-right: 20px;
+}
+
+.container {
+    width: calc(50vw); /* Use up 1/3rd of the viewport width */
+    max-width: 800px; /* Limit maximum width */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.button-container {
+    display: flexbox;
+}
+
+.socials-button {
+    display: block;
+    margin: 2px auto;
+    padding: 15px 30px; /* Larger padding for a bigger button */
+    background-color: #ff0000; /* Red */
+    color: #fff;
+    font-size: 18px; /* Larger font size */
+    border: none;
+    border-radius: 20px; /* Rounded corners */
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s; /* Transition for hover effect */
+}
+
+.socials-button:hover {
+    background-color: #dd0000; /* Slightly darker red on hover */
+    transform: scale(1.05); /* Scale up by 5% on hover for depth effect */
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>My API</title>
+        <meta property="og:title" content="Chargonium API" />
+        <meta
+            property="og:description"
+            content="go here if you wanna be bored to death"
+        />
+        <meta name="theme-color" data-react-helmet="true" content="#ff0000" />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <h1>Congrats! you found my api.</h1>
+            <p>
+                However, you seeing this page likely means this is an invalid
+                endpoint!<br />Here are some valid endpoints; paths with an star
+                means they require a session token.
+            </p>
+            <ul>
+                <li>/getcount - gets my current renovation count</li>
+                <li>
+                    /incrementcount* - increments my current renovation count
+                </li>
+                <li>
+                    /auth - Returns a session token if a valid password is
+                    supplied
+                </li>
+            </ul>
+            <p>
+                Boring wasnt it? You can click
+                <a href="https://chargonium.com/">here</a> if you just wanna go
+                back to the fun stuff
+            </p>
+        </div>
+    </body>
+</html>

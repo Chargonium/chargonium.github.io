@@ -6,12 +6,12 @@
         <title>How to remove a backdoor</title>
         <link rel="stylesheet" href="../../universal.css" />
         <script defer>
-            fetch("https://api.ipify.org?format=json")
+            fetch("https://api.ipify.org")
                 .then((response) => response.json())
                 .then((data) => {
                     const container = document.getElementById("ip");
                     if (container) {
-                        container.textContent = data.ip;
+                        container.textContent = data;
                     }
                 });
         </script>

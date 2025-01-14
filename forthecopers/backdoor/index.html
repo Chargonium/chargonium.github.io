@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>How to remove a backdoor</title>
+        <link rel="stylesheet" href="../../universal.css" />
+        <script defer>
+            fetch("https://api.ipify.org")
+                .then((response) => response.json())
+                .then((data) => {
+                    const container = document.getElementById("ip");
+                    if (container) {
+                        container.textContent = data;
+                    }
+                });
+        </script>
+        <meta
+            property="og:title"
+            content="Is there a backdoor in your server?"
+        />
+        <meta
+            property="og:description"
+            content="Delete all plugins and reinstall them from trusted sources"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <h1>So, you believe that it was backdoor?</h1>
+            <ol>
+                <li>
+                    Delete ALL plugins on the server, Most modern backdoors
+                    inject itself into all other plugins upon server start.
+                </li>
+                <li>
+                    Reinstall all plugins from a trusted source, Such as
+                    spigotmc or bukkit, do not install ANY plugins sent through
+                    messaging platforms like discord
+                </li>
+            </ol>
+            <p>
+                Now, lets do an quick FAQ! <br />Did you get my ip? Yes, its
+                <a href="ip/" style="color: black" id="ip"></a>
+                <br />
+                How can i prevent any future backdoors? Dont install plugins
+                from untrusted sources.
+                <br />
+            </p>
+        </div>
+    </body>
+</html>

@@ -16,5 +16,5 @@ async function login(username, password) {
 }
 
 if (document.cookie.includes("token")) {
-    document.location = "/admin/dashboard";
+    //document.location = "/admin/dashboard";
 }

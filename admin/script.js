@@ -1,8 +1,8 @@
 async function login(username, password) {
     let resp = await fetch("https://api.chargonium.com/auth", {
         headers: {
-            User: username,
-            Auth: password,
+            "User": username,
+            "Auth": password,
         },
     });
     let token = await resp.text();

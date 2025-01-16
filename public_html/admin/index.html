@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Admin login</title>
+        <meta property="og:title" content="Chargonium's Admin Page" />
+        <meta property="og:description" content="Admins only please !" />
+        <meta name="theme-color" data-react-helmet="true" content="#ff0000" />
+        <link rel="stylesheet" href="/universal.css" />
+        <script src="script.js" defer></script>
+        <style>
+            .container form {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <form
+                onsubmit="event.preventDefault(); login(document.getElementById('username').value, document.getElementById('password').value);"
+            >
+                <label for="username">username</label>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Enter your username"
+                />
+                <label for="password">password</label>
+                <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="Enter your password"
+                />
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </body>
+</html>

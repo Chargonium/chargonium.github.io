@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Admin Dashboard</title>
+        <link rel="stylesheet" href="/universal.css" />
+        <link rel="stylesheet" href="style.css" />
+        <script src="/admin/scripts/renocount.js" defer></script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Admin Dashboard (cool ppl only)</h1>
+            <form
+                onsubmit="event.preventDefault(); updateCount(document.getElementById('renocount').value);"
+            >
+                <input type="number" name="renocount" id="renocount" />
+                <button>Set renovation count</button>
+            </form>
+            <button onclick="document.location.href='/admin/users'">
+                Users
+            </button>
+        </div>
+    </body>
+</html>

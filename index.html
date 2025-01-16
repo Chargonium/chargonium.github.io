@@ -13,8 +13,9 @@
         <meta property="og:type" content="website" />
         <link rel="icon" type="image/x-icon" href="/pfp.jpg" />
         <meta name="theme-color" data-react-helmet="true" content="#ff0000" />
+        <script src="script.js" defer></script>
     </head>
-    <body class="body">
+    <body>
         <div class="container" id="about">
             <div id="name">
                 <img src="pfp.jpg" />
@@ -30,26 +31,27 @@
                         >contact@chargonium.com</a
                     >
                 </li>
-                <li>
-                    Roses are blue. <br />Violets are red. <br />I am fucking
-                    delusional.
-                </li>
+                <li>Roses are blue.</li>
+                <li>Violets are red.</li>
+                <li>I am fucking delusional.</li>
                 <li>I got a single braincell!</li>
                 <li>
                     Refer to <a href="forthecopers/">this</a> if your server got
                     renovated by me!
                 </li>
-            </ul>
-            <div class="button-container">
-                <button
-                    class="socials-button"
-                    onclick="window.location.href = 'https://linktr.ee/chargonium'"
-                >
-                    Socials
-                </button>
-                <br />
-            </div>
-            <ul>
+                <li>
+                    I have renovated at least
+                    <span id="renovationCount">x</span> servers!
+                </li>
+                <li id="button-container">
+                    <button
+                        class="socials-button"
+                        onclick="window.location.href = 'https://linktr.ee/chargonium'"
+                    >
+                        Socials
+                    </button>
+                </li>
+
                 <li>My spotify playlist:</li>
             </ul>
             <iframe

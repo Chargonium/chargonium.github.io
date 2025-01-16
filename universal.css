@@ -19,7 +19,27 @@ body {
     background-color: rgba(255, 255, 255, 0.3);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     text-align: center;
+    align-items: center;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+}
+
+button {
+    display: block;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding: 15px 30px; /* Larger padding for a bigger button */
+    background-color: #ff0000; /* Red */
+    color: #fff;
+    font-size: 18px; /* Larger font size */
+    border: none;
+    border-radius: 20px; /* Rounded corners */
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s; /* Transition for hover effect */
+}
+
+button:hover {
+    background-color: #dd0000; /* Slightly darker red on hover */
+    transform: scale(1.05); /* Scale up by 5% on hover for depth effect */
 }

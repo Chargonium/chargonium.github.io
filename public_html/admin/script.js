@@ -5,9 +5,14 @@ async function login(username, password) {
             Auth: password,
         },
     });
-    let token = await resp.text();
-    document.cookie = `token=${token}; Max-Age=86400; path=/`;
-    document.location = "/admin/dashboard";
+
+    if (resp.status == 200) {
+        let token = await resp.text();
+        document.cookie = `token=${token}; Max-Age=86400; path=/admin`;
+        document.location = "/admin/dashboard";
+    } else if (resp.status == 401) {
+        alert("Invalid credentials");
+    }
 }
 
 if (document.cookie.includes("token")) {

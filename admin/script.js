@@ -7,9 +7,9 @@ async function login(username, password) {
     });
     let token = await resp.text();
     document.cookie = `token=${token}; Max-Age=86400; path=/`;
-    document.location = "/admin/dashboard";
+    //document.location = "/admin/dashboard";
 }
 
 if (document.cookie.includes("token")) {
-    document.location = "/admin/dashboard";
+    //document.location = "/admin/dashboard";
 }

@@ -19,15 +19,14 @@
     </head>
     <body>
         <div class="container">
-            <form
-                onsubmit="event.preventDefault(); login(document.getElementById('username').value, document.getElementById('password').value);"
-            >
+            <form onsubmit="login(event)">
                 <label for="username">username</label>
                 <input
                     type="text"
                     id="username"
                     name="username"
                     placeholder="Enter your username"
+                    required
                 />
                 <label for="password">password</label>
                 <input
@@ -35,6 +34,7 @@
                     name="password"
                     id="password"
                     placeholder="Enter your password"
+                    required
                 />
                 <button type="submit">Submit</button>
             </form>

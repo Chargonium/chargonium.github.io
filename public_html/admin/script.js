@@ -1,4 +1,4 @@
-async function login(username, password) {
+async function _login(username, password) {
     let resp = await fetch("https://api.chargonium.com/auth", {
         headers: {
             User: username,
@@ -17,4 +17,18 @@ async function login(username, password) {
 
 if (document.cookie.includes("token")) {
     document.location = "/admin/dashboard";
+}
+
+function login(event) {
+    event.preventDefault();
+
+    const data = new FormData(event.target);
+
+    console.log(
+        JSON.stringify({
+            Username: data.get("username"),
+            Password: data.get("password"),
+            "cf-turnstile-response": data.get("cf-turnstile-response"),
+        })
+    );
 }

@@ -1,0 +1,20 @@
+#users {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    list-style: none;
+}
+#users a {
+    text-decoration: none;
+    color: #fcc;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background-color: #f00;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#users a:hover {
+    background-color: #d00;
+    color: #dbb;
+}

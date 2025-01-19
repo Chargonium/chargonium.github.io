@@ -1,0 +1,21 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "getcount",
+	"main": "src/index.js",
+	"compatibility_date": "2025-01-09",
+	"observability": {
+		"enabled": true
+	},
+	"workers_dev": false,
+	"preview_urls": false,
+	"route": {
+		"pattern": "api.chargonium.com/getcount",
+		"zone_id": "3552a06112ec5b3d63ac98253123fd5b"
+	},
+	"kv_namespaces": [
+		{
+			"binding": "KV",
+			"id": "818071243e514f93ac9bc087b3f96bb5"
+		}
+	]
+}

@@ -6,10 +6,12 @@ fetch("https://api.chargonium.com/getcount").then((response) => {
 
 function updateCount(newValue) {
     fetch("https://api.chargonium.com/setcount", {
+        method: "POST",
         headers: {
-            Auth: document.cookie.split("=")[1],
-            Value: newValue,
+            Authorization: document.cookie.split("=")[1],
+            "Content-Type": "application/json",
         },
+        body: JSON.stringify({ count: newValue }),
     }).then((response) => {
         console.log(response.status);
         if (response.status == 200) {
@@ -18,7 +20,7 @@ function updateCount(newValue) {
             });
         } else if (response.status == 401) {
             document.cookie =
-                "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+                "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/admin";
             alert("Your session has expired; Please login again!");
             document.location.href = "/admin";
         } else if (response.status == 403) {

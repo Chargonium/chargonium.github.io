@@ -1,0 +1,25 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "getusers",
+	"main": "src/index.js",
+	"compatibility_date": "2025-01-09",
+	"workers_dev": false,
+	"preview_urls": false,
+	"observability": {
+		"enabled": true
+	},
+	"route": {
+		"pattern": "api.chargonium.com/getusers",
+		"zone_id": "3552a06112ec5b3d63ac98253123fd5b"
+	},
+	"kv_namespaces": [
+		{
+			"binding": "Auth",
+			"id": "9c5ddd176c724e3c866d73b96fdc0d62"
+		},
+		{
+			"binding": "Sessions",
+			"id": "39426ed57c894b259449527b6dafc13b"
+		}
+	]
+}

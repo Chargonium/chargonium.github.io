@@ -10,13 +10,19 @@
 
 export default {
 	async fetch(request, env, ctx) {
+		// Set headers
+
 		const headers = new Headers();
+		const allowedOrigins = ['https://chargonium.com', 'https://www.chargonium.com', 'https://chargonium.github.io'];
 
-		// Set CORS headers
+		if (allowedOrigins.includes(request.headers.get('Origin'))) {
+			headers.set('Access-Control-Allow-Origin', '*');
+		} else {
+			headers.set('Access-Control-Allow-Origin', 'null');
+		}
 
-		headers.set('Access-Control-Allow-Origin', 'https://chargonium.com, https://www.chargonium.com, https://chargonium.github.io');
-		headers.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
-		headers.set('Access-Control-Allow-Headers', '');
+		headers.set('Access-Control-Allow-Methods', 'POST, OPTIONS');
+		headers.set('Access-Control-Allow-Headers', 'Content-Type');
 
 		if (request.method === 'OPTIONS') {
 			// return cors headers

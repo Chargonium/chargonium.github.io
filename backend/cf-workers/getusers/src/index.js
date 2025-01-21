@@ -27,7 +27,7 @@ async function validateAuth(token, env) {
 
 	const allowedPermissions = parsePermissionString(sessionData.perms);
 
-	return allowedPermissions.includes('Update Renovationcount');
+	return allowedPermissions.includes('Manage Users');
 }
 
 export default {
@@ -44,46 +44,45 @@ export default {
 			headers.set('Access-Control-Allow-Origin', 'null');
 		}
 
-		headers.set('Access-Control-Allow-Methods', 'POST, OPTIONS');
-		headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+		headers.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
+		headers.set('Access-Control-Allow-Headers', 'Authorization');
+		headers.set('Content-Type', 'application/json');
 
 		if (request.method == 'OPTIONS') {
+			headers.delete('Content-Type');
 			return new Response(null, {
 				status: 204,
 				headers: headers,
 			});
-		} else if (request.method == 'POST') {
-			let token = request.headers.get('Authorization');
+		} else if (request.method == 'GET') {
+			const token = request.headers.get('Authorization');
 
-			if (token === null) return new Response(JSON.stringify({ error: 'No auth token' }), { status: 401, headers: headers });
-
-			let auth = await validateAuth(token, env);
-
-			if (!auth) return new Response(JSON.stringify({ error: 'Invalid auth' }), { status: 401, headers: headers });
-
-			if (request.headers.get('Content-Type') === 'application/json') {
-				const json = await request.json();
-
-				await env.KV.put('RenovationCount', json.count);
-
-				return new Response(null, {
-					status: 204,
-					headers: headers,
-				});
-			} else if (request.headers.get('Content-Type') === 'text/plain') {
-				const text = await request.text();
-
-				await env.KV.put('RenovationCount', text);
-
-				return new Response(null, {
-					status: 204,
-					headers: headers,
-				});
-			} else {
-				return new Response(JSON.stringify({ error: 'Invalid content type' }), { status: 400, headers: headers });
+			if (!token) {
+				return new Response(JSON.stringify({ error: 'No token provided' }), { status: 401, headers: headers });
 			}
+
+			if (!(await validateAuth(token, env))) {
+				return new Response(JSON.stringify({ error: 'Invalid token' }), { status: 403, headers: headers });
+			}
+			let users = {};
+
+			let data = await env.Auth.list();
+
+			var cUser = '';
+
+			for (let i = 0; i < data.keys.length; i++) {
+				cUser = data.keys[i].name;
+
+				let userData = JSON.parse(await env.Auth.get(cUser));
+				delete userData.password; // Remove the password field
+				users[cUser] = userData;
+			}
+
+			console.log(users);
+
+			return new Response(JSON.stringify(users), { status: 200, headers: headers });
 		}
 
-		return new Response(JSON.stringify({ error: 'Invalid method' }), { status: 405, headers: headers });
+		return new Response(JSON.stringify({ error: 'Method not allowed' }), { status: 405, headers: headers });
 	},
 };

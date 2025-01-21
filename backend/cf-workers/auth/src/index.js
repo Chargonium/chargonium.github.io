@@ -15,15 +15,7 @@ function generateRandomSHA256Hash(arrayLen = 256) {
 	return hash(randomData);
 }
 
-let headers = {
-	'Access-Control-Allow-Origin': 'https://chargonium.com, https://www.chargonium.com, https://chargonium.github.io',
-	'Access-Control-Allow-Methods': 'POST, OPTIONS',
-	'Access-Control-Allow-Headers': 'Content-Type',
-	'Access-Control-Max-Age': '86400',
-	'Content-Type': 'application/json',
-};
-
-function handleCors() {
+function handleCors(headers) {
 	headers['Content-Type'] = null;
 	return new Response(null, {
 		status: 204,
@@ -31,7 +23,7 @@ function handleCors() {
 	});
 }
 
-async function handleAuth(request, env) {
+async function handleAuth(request, env, headers) {
 	let response = {};
 
 	const contentType = request.headers.get('content-type');
@@ -71,13 +63,27 @@ async function handleAuth(request, env) {
 
 export default {
 	async fetch(request, env, ctx) {
+		// Set headers
+
+		const headers = new Headers();
+		const allowedOrigins = ['https://chargonium.com', 'https://www.chargonium.com', 'https://chargonium.github.io'];
+
+		if (allowedOrigins.includes(request.headers.get('Origin'))) {
+			headers.set('Access-Control-Allow-Origin', '*');
+		} else {
+			headers.set('Access-Control-Allow-Origin', 'null');
+		}
+
+		headers.set('Access-Control-Allow-Methods', 'POST, OPTIONS');
+		headers.set('Access-Control-Allow-Headers', 'Content-Type');
+
 		if (request.method == 'OPTIONS') {
 			// Handle cors requests
-			return handleCors();
+			return handleCors(headers);
 		} else if (request.method == 'POST') {
 			// Handle authentication request.
 
-			return await handleAuth(request, env);
+			return await handleAuth(request, env, headers);
 		} else {
 			// Handle invalid requests
 
